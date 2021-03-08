@@ -28,39 +28,37 @@ class _HomePageState extends State<HomePage> {
           children: [
             Text(
               "International ",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.red),
             ),
             Text(
-              "News Paper",
-              style: TextStyle(color: Colors.red),
+              "NewsPaper",
+              style: TextStyle(color: Colors.white),
             ),
           ],
         ),
       ),
       body: Container(
-
         //color: Colors.white,
 
-
-          child: Column(
-            children: [
-              Container(
-                height: 100.0,
-                padding: EdgeInsets.symmetric(horizontal: 12.0),
-                child: ListView.builder(
-                  itemCount: categories.length,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return CategoryTile(
-                       imageUrl: categories[index].imageUrl,
-                    );
-                  },
-                ),
+        child: Column(
+          children: [
+            Container(
+              height: 100.0,
+              padding: EdgeInsets.symmetric(horizontal: 12.0),
+              child: ListView.builder(
+                itemCount: categories.length,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return CategoryTile(
+                    imageUrl: categories[index].imageUrl,
+                    categoryName: categories[index].categorytName,
+                  );
+                },
               ),
-            ],
-          ),
-
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -74,15 +72,34 @@ class CategoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:  EdgeInsets.only(right: 16,top: 6),
-
+      margin: EdgeInsets.only(right: 16, top: 6),
       child: Stack(
         children: [
-
           ClipRRect(
-            borderRadius: BorderRadius.circular(6),
-              child: CachedNetworkImage(imageUrl: imageUrl,width: 180,height: 110,fit: BoxFit.cover,)),
-
+              borderRadius: BorderRadius.circular(6),
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                width: 180,
+                height: 110,
+                fit: BoxFit.cover,
+              )),
+          Container(
+            alignment: Alignment.center,
+            width: 180,
+            height: 110,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(6),
+              color: Colors.black26,
+            ),
+            child: Text(
+              categoryName,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 18,
+              ),
+            ),
+          )
         ],
       ),
     );
