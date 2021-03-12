@@ -107,36 +107,42 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 16, top: 6),
-      child: Stack(
-        children: [
-          ClipRRect(
-              borderRadius: BorderRadius.circular(6),
-              child: CachedNetworkImage(
-                imageUrl: imageUrl,
-                width: 180,
-                height: 110,
-                fit: BoxFit.cover,
-              )),
-          Container(
-            alignment: Alignment.center,
-            width: 180,
-            height: 110,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6),
-              color: Colors.black26,
-            ),
-            child: Text(
-              categoryName,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-                fontSize: 18,
+
+    return GestureDetector(
+      onTap: (){
+
+      },
+      child: Container(
+        margin: EdgeInsets.only(right: 16, top: 6),
+        child: Stack(
+          children: [
+            ClipRRect(
+                borderRadius: BorderRadius.circular(6),
+                child: CachedNetworkImage(
+                  imageUrl: imageUrl,
+                  width: 180,
+                  height: 110,
+                  fit: BoxFit.cover,
+                )),
+            Container(
+              alignment: Alignment.center,
+              width: 180,
+              height: 110,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6),
+                color: Colors.black26,
               ),
-            ),
-          )
-        ],
+              child: Text(
+                categoryName,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18,
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
